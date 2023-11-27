@@ -8,13 +8,18 @@ const validate = async (spec) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "api_definition": spec,
+            "api_definition_string": spec,
             "ignore_rules": [224]
         })
     })
     const json = await res.json()
-    if (json.violations.length > 0) {
-        throw new Error(`Violations found: ${JSON.stringify(json.violations, 0, 2)}`)
+    const violationsNotMust = json.violations.filter(violation => violation.violation_type !== 'MUST')
+    if (violationsNotMust.length > 0) {
+        console.log(`Violations found: ${JSON.stringify(violationsNotMust, 0, 2)}`)
+    }
+    const mustViolations = json.violations.filter(violation => violation.violation_type === 'MUST')
+    if (mustViolations.length > 0) {
+        throw new Error(`Violations found: ${JSON.stringify(mustViolations, 0, 2)}`)
     }
 }
 
