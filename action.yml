@@ -4,9 +4,6 @@ inputs:
   spec: # id of input
     description: "The open api spec to validate"
     required: true
-outputs:
-  success: # id of output
-    description: "Whether the validation was successful"
 runs:
   using: "node20"
   main: "index.js"

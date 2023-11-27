@@ -3,13 +3,9 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to validate a spec
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: Validate spec
         uses: kompasbank/zally-js-cli@v0.2
         with:
           spec: '{ "openapi": "3.0.0", "info": { "title": "Test", "version": "1.0.0" }, "paths": { "/test": { "get": { "responses": { "200": { "description": "OK" } } } } } }'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.success }}"

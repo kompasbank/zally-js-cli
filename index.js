@@ -1,4 +1,4 @@
-import { getInput, setOutput, setFailed } from '@actions/core';
+import { getInput, setFailed } from '@actions/core';
 
 const fetchData = async (spec) => {
     const res = await fetch('http://localhost:8000/api-violations', {
@@ -19,7 +19,6 @@ const fetchData = async (spec) => {
 
 try {
     fetchData(getInput('spec'));
-    setOutput('success', true);
 } catch (error) {
     setFailed(error.message);
 }
