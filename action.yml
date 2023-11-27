@@ -1,0 +1,12 @@
+name: "Zally js CLI"
+description: "Call the zally server using a js CLI"
+inputs:
+  open_api_spec: # id of input
+    description: "The open api spec to validate"
+    required: true
+outputs:
+  success: # id of output
+    description: "Whether the validation was successful"
+runs:
+  using: "node20"
+  main: "index.js"
