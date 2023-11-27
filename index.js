@@ -1,5 +1,4 @@
 import { getInput, setOutput, setFailed } from '@actions/core';
-import { context } from '@actions/github';
 
 const fetchData = async (spec) => {
     const res = await fetch('http://localhost:8000/api-violations', {
@@ -9,9 +8,7 @@ const fetchData = async (spec) => {
         },
         body: JSON.stringify({
             "api_definition": spec,
-            "api_definition_string": "",
-            "api_definition_url": "",
-            "ignore_rules": []
+            "ignore_rules": [224]
         })
     })
     const json = await res.json()
