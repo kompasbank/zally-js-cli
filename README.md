@@ -25,7 +25,7 @@ with:
   file: 'file_with_spec_paths.txt'
 ```
 
-## To update
+## Updating the action
 
 Create a new tag:
 ```shell
