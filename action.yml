@@ -1,7 +1,7 @@
 name: "Zally js CLI"
 description: "Call the zally server using a js CLI"
 inputs:
-  open_api_spec: # id of input
+  spec: # id of input
     description: "The open api spec to validate"
     required: true
 outputs:
