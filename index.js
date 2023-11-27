@@ -20,6 +20,7 @@ const validate = async (spec) => {
 }
 
 const readFile = (file) => {
+    console.log(`Reading file at path: ${path.join(process.env.GITHUB_ACTION_PATH, file)}`)
     const filePath = path.join(process.env.GITHUB_ACTION_PATH, file);
     const readFile = fs.readFileSync(filePath, 'utf-8');
     return readFile;
@@ -27,8 +28,11 @@ const readFile = (file) => {
 
 
 try {
+    const file = getInput('file');
+    console.log(`Reading file ${file}`)
     const specPaths = readFile(getInput('file'))
     for (const path of specPaths.split('\n')) {
+        console.log(`Validating ${path}`)
         const spec = readFile(path);
         validate(spec);
     }
