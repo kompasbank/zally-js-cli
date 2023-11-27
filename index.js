@@ -1,6 +1,8 @@
 import { getInput, setFailed } from '@actions/core';
+import fs from 'fs';
+import path from 'path';
 
-const fetchData = async (spec) => {
+const validate = async (spec) => {
     const res = await fetch('http://localhost:8000/api-violations', {
         method: 'POST',
         headers: {
@@ -17,8 +19,20 @@ const fetchData = async (spec) => {
     }
 }
 
+const readFile = (file) => {
+    const filePath = path.join(process.env.GITHUB_ACTION_PATH, file);
+    const readFile = fs.readFileSync(filePath, 'utf-8');
+    return readFile;
+}
+
+
 try {
-    fetchData(getInput('spec'));
+    const specPaths = readFile(getInput('file'))
+    for (const path of specPaths.split('\n')) {
+        const spec = readFile(path);
+        validate(spec);
+    }
+
 } catch (error) {
     setFailed(error.message);
 }

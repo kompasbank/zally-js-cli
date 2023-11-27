@@ -22,7 +22,7 @@ If the file was ok
 ```yaml
 uses: actions/zally-js-cli-action@1234abcd
 with:
-  spec: '{openapi spec}'
+  file: 'file_with_spec_paths.txt'
 ```
 
 ## To update
