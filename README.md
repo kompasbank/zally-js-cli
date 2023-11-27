@@ -24,3 +24,15 @@ uses: actions/zally-js-cli-action@1234abcd
 with:
   spec: '{openapi spec}'
 ```
+
+## To update
+
+Create a new tag:
+```shell
+git tag -a -m "New feature: bla bla" v0.4
+```
+
+Push the tag:
+```shell
+git push --follow-tags
+```
