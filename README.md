@@ -7,15 +7,9 @@ This action calls a local running zally server, which validates the input from t
 
 ## Inputs
 
-### `spec`
+### `file`
 
-**Required** The spec to validate
-
-## Outputs
-
-### `success`
-
-If the file was ok
+**Required** The file to find the openapi files in
 
 ## Example usage
 
