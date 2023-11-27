@@ -21,10 +21,8 @@ const validate = async (spec) => {
 
 const readFile = (file) => {
     console.log(`Reading file at path: ${file}`)
-    console.log(`Reading file at path: ${path.join(process.env.GITHUB_ACTION_PATH, file)}`)
-    const filePath = path.join(process.env.GITHUB_ACTION_PATH, file);
-    const readFile = fs.readFileSync(filePath, 'utf-8');
-    return readFile;
+    console.log(`Reading file at path: ${process.env.GITHUB_ACTION_PATH}`)
+    return fs.readFileSync(file, 'utf-8');
 }
 
 
